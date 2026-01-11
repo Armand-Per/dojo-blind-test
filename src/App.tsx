@@ -22,12 +22,14 @@ const fetchTracks = async () => {
     },
   })
 
-  if (!response.ok) {
-    throw new Error(`Fetching tracks failed with status ${response.status}`);
-  }
-  const data = (await response.json()) as { items: any[] };
+  // if (!response.ok) {
+  //   throw new Error(`Fetching tracks failed with status ${response.status}`);
+  // }
+  // const data = (await response.json()) as { items: any[] };
 
-  return data.items;
+  return response.data.items;
+
+  // return data.items;
 };
 
 const pickRandomTrack = (tracks: any[]) => {
