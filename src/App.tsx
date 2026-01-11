@@ -3,17 +3,24 @@ import './App.css';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import swal from 'sweetalert';
+import { getUsersSavedTracks } from './lib/spotify/api/tracks/tracks';
 
 const apiToken =
   "BQDe_5bueu8Sj9MtcKMbvO8KSUP0Xtk9RV__HKTqx6sJ8w9QBsuQSSQN3f3Pjki634-VnzMgETg6vlW4ReHHNPRuBOXzMj7pUbEIYhpDqBC6JNERcYKzWLU_kyMzW_UeP3siMGVQN1eS0mFI09KnfMCyjdTxeakzCJR7ZR01pT74wpVk3EPBH8IfAAY0zgZKQ2MvtDugbdtFTWGR2V1kg6UkLrlST9TRo-oU2P8F_y8GisEzWrf0rJ6WSnRd9uksLVRRmzErB1Uz1PgJ92ZItzTFZDlCzE00gHVOSg-cEw1RhLP08c-fiBqLjVoamSfZVe_FWlgkaxYvE1yMnZuNlU5Ybsh7ZFmGlhUdbRYV6btYh36MbAGa1G2WQ_nViwahNxJbADgPHY_6"
 
 const fetchTracks = async () => {
-  const response = await fetch('https://api.spotify.com/v1/me/tracks', {
-    method: 'GET',
+  // const response = await fetch('https://api.spotify.com/v1/me/tracks', {
+  //   method: 'GET',
+  //   headers: {
+  //     Authorization: 'Bearer ' + apiToken,
+  //   },
+  // });
+
+  const response = await getUsersSavedTracks(undefined, {
     headers: {
-      Authorization: 'Bearer ' + apiToken,
+      Authorization: `Bearer ${apiToken}`,
     },
-  });
+  })
 
   if (!response.ok) {
     throw new Error(`Fetching tracks failed with status ${response.status}`);
