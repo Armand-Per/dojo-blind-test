@@ -20,7 +20,7 @@ const fetchTracks = async () => {
     headers: {
       Authorization: `Bearer ${apiToken}`,
     },
-  })
+  });
 
   // if (!response.ok) {
   //   throw new Error(`Fetching tracks failed with status ${response.status}`);
