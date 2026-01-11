@@ -1,0 +1,1 @@
+export type Tempo = number;

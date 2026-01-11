@@ -1,0 +1,53 @@
+import { Loudness } from "./Loudness";
+import { Tempo } from "./Tempo";
+import { TimeSignature } from "./TimeSignature";
+import { Key } from "./Key";
+import { Mode } from "./Mode";
+import { TimeIntervalObject } from "./TimeIntervalObject";
+import { SectionObject } from "./SectionObject";
+import { SegmentObject } from "./SegmentObject";
+
+export type AudioAnalysisObject = {
+            meta?: {
+            analyzer_version?: string;
+  platform?: string;
+  detailed_status?: string;
+  status_code?: number;
+  timestamp?: number;
+  analysis_time?: number;
+  input_process?: string;
+          };
+  track?: {
+            num_samples?: number;
+  duration?: number;
+  sample_md5?: string;
+  offset_seconds?: number;
+  window_seconds?: number;
+  analysis_sample_rate?: number;
+  analysis_channels?: number;
+  end_of_fade_in?: number;
+  start_of_fade_out?: number;
+  loudness?: Loudness;
+  tempo?: Tempo;
+  tempo_confidence?: number;
+  time_signature?: TimeSignature;
+  time_signature_confidence?: number;
+  key?: Key;
+  key_confidence?: number;
+  mode?: Mode;
+  mode_confidence?: number;
+  codestring?: string;
+  code_version?: number;
+  echoprintstring?: string;
+  echoprint_version?: number;
+  synchstring?: string;
+  synch_version?: number;
+  rhythmstring?: string;
+  rhythm_version?: number;
+          };
+  bars?: TimeIntervalObject[];
+  beats?: TimeIntervalObject[];
+  sections?: SectionObject[];
+  segments?: SegmentObject[];
+  tatums?: TimeIntervalObject[];
+          };
